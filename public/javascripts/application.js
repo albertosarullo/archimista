@@ -33,6 +33,7 @@ $(document).ready(function() {
   // DON'T GO AWAY WITHOUT SAVE
 
   $(function () {
+
     // FIXME: non innescare askConfirm per le form che non eseguono azioni di save (search, import, ecc.)
     $('form:not(".skip-prompt") :input').bind('change', function () {
       $("#fond-preview").addClass("disabled"); // solo in fonds/treeview

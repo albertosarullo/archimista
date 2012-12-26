@@ -29,6 +29,16 @@
           <%= prev_or_next_link("right", @unit.next_in_sequence, action_name) %>
         </div>
         <hr />
+          <select id="unit_jump_select"> 
+            <% (1..@root_fond.active_descendant_units_count).each do |unit_number| %>
+              <option value='<%= url_for(:overwrite_params => {:id => unit_number}) %>' <%
+              if unit_number == @unit.sequence_number %>
+                <%= " selected" %>
+              <% end %>><%= unit_number %></option>
+            <% end %>
+          </select>
+          <input type="button" value="Vai" class="btn btn-small pull-right" id="unit_jump" />
+        <hr />
       <% end %>
 
       <div>
