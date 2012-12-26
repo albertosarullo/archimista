@@ -156,7 +156,11 @@ $(document).ready(function(){
         if(event.which == 32) {
           if($target_cell.hasClass("editable-jqgrid-native")) {
             $target_cell.trigger('click');
-          } else {         
+          } else {
+            // FIX by Alberto Sarullo: continue to propagate event if bootstrap modals are open
+            if ( $("#text-field-dialog").is(":visible") || $("#preferred-event-dialog").is(":visible")) {
+              return;
+            }
             event.preventDefault();
             if(!$.archigrid.utils.is_any_dialog_open()) {
               $.archigrid.events.dispatch_standalone_edit($target_cell);
